@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -66,6 +67,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battery\Battery.cs" />
+    <Compile Include="Battery\BatteryStatus.cs" />
     <Compile Include="Camera\MediaInformation.cs" />
     <Compile Include="Camera\MediaInformationConverter.cs" />
     <Compile Include="Camera\TakeSnapshotCommand.cs" />
@@ -85,5 +88,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
