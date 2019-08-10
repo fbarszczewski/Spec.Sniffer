@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spec.Sniffer", "Spec.Sniffer\Spec.Sniffer.csproj", "{7180340A-B949-45BD-B7EB-1E1BA80ADF10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spec.Sniffer.Model", "Spec.Sniffer.Model\Spec.Sniffer.Model.csproj", "{9CAE9D98-712C-4B85-B0D5-8D56F6D47FD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7180340A-B949-45BD-B7EB-1E1BA80ADF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7180340A-B949-45BD-B7EB-1E1BA80ADF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7180340A-B949-45BD-B7EB-1E1BA80ADF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7180340A-B949-45BD-B7EB-1E1BA80ADF10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CAE9D98-712C-4B85-B0D5-8D56F6D47FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CAE9D98-712C-4B85-B0D5-8D56F6D47FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CAE9D98-712C-4B85-B0D5-8D56F6D47FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CAE9D98-712C-4B85-B0D5-8D56F6D47FD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0435D7D-C0EE-4C11-9C73-C316566FA5D8}
+	EndGlobalSection
+EndGlobal
