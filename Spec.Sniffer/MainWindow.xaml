@@ -159,7 +159,7 @@
                                             </Style>
                                         </ToggleButton.Style>
                                     </ToggleButton>
-
+    
                                     <ToggleButton x:Name="MicButton"
                                                   Grid.Column="1" Margin="5"
                                                   Background="Transparent"
