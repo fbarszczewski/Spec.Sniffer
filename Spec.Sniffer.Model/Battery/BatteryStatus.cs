@@ -26,8 +26,7 @@ namespace Spec.Sniffer.Model.Battery
         {
             
             _wmiSearcher = new ManagementObjectSearcher();
-            Batteries =new List<Battery>();
-
+            Batteries = new List<Battery> {new Battery(), new Battery()};
             ReadCimv2Win32_Battery();
             ReadWmiBatteryStatus();
         }
