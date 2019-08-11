@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Spec.Sniffer.Model.Battery;
 
 namespace Spec.Sniffer
 {
@@ -23,6 +24,7 @@ namespace Spec.Sniffer
         public MainWindow()
         {
             InitializeComponent();
+            BatteryStatus battery=new BatteryStatus();
         }
     }
 }
