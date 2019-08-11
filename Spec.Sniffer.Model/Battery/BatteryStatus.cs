@@ -10,7 +10,7 @@ namespace Spec.Sniffer.Model.Battery
 {
     public class BatteryStatus
     {
-        private int _batteryCount;
+        private int _batteryId;
         private ManagementObjectSearcher _wmiSearcher;
         public List<Battery> Batteries { get; set; }
 
@@ -29,6 +29,7 @@ namespace Spec.Sniffer.Model.Battery
             Batteries =new List<Battery>();
 
             ReadCimv2Win32_Battery();
+            ReadWmiBatteryStatus();
         }
 
         private void ReadCimv2Win32_Battery()
@@ -39,22 +40,53 @@ namespace Spec.Sniffer.Model.Battery
             {
                 foreach (var obj in _wmiSearcher.Get())
                 {
-                    Batteries[_batteryCount].Name = (string)obj["Name"];
-                    Batteries[_batteryCount].Id = (string)obj["DeviceID"];
-                    Batteries[_batteryCount].EstimatedChargeRemaining = (uint)obj["EstimatedChargeRemaining"];
+                    Batteries[_batteryId].Name = (string)obj["Name"];
+                    Batteries[_batteryId].UniqueId = (string)obj["DeviceID"];
+                    Batteries[_batteryId].EstimatedChargeRemaining = (uint)obj["EstimatedChargeRemaining"];
 
-                    _batteryCount++;
+                    _batteryId++;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //ignore
+                MessageBox.Show($"ReadCimv2Win32_Battery:\n{ex.Message}");
             }
-
         }
 
         private void ReadWmiBatteryStatus()
         {
+            PrepareQuery(@"root\WMI", @"SELECT Charging, Discharging, ChargeRate, DischargeRate FROM BatteryStatus");
+
+            try
+            {
+                foreach (var obj in _wmiSearcher.Get())
+                {
+                    if ((bool)obj["Charging"])
+                    {
+                        
+                    }
+
+                    switch ((bool)obj["Charging"])
+                    {
+                        case true:
+                            Batteries[_batteryId].IsCharging = true;
+                            Batteries[_batteryId].ChargeRate = (int)obj["ChargeRate"];
+                            break;
+
+                        case false:
+                            Batteries[_batteryId].IsCharging = false;
+                            Batteries[_batteryId].ChargeRate = -(int)obj["DischargeRate"];
+                            break;
+                    }
+
+
+                    _batteryId++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ReadWmiBatteryStatus:\n{ex.Message}");
+            }
 
         }
 
@@ -72,7 +104,7 @@ namespace Spec.Sniffer.Model.Battery
         private void PrepareQuery(string newScope,string newQuery)
         {
 
-            _batteryCount = 0;
+            _batteryId = 0;
 
             //set scope if new
             if (_wmiSearcher.Scope.Path.NamespacePath != newScope)
