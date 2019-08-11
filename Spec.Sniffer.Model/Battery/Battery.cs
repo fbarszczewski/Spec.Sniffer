@@ -24,7 +24,7 @@ namespace Spec.Sniffer.Model.Battery
             {
                 if (FullChargedCapacity != 0 && DesignedCapacity != 0)
                 {
-                    UInt32 health = DesignedCapacity * 100 / FullChargedCapacity;
+                    UInt32 health = FullChargedCapacity * 100 / DesignedCapacity;
 
                     return health < 100 ? $"{health}%" : "100%";
                 }
