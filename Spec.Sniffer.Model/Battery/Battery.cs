@@ -1,4 +1,6 @@
-﻿namespace Spec.Sniffer.Model.Battery
+﻿using System;
+
+namespace Spec.Sniffer.Model.Battery
 {
     public class Battery
     {
@@ -27,8 +29,11 @@
         /// </summary>
         public int ChargeRate { get; set; }
 
-        public uint DesignedCapacity { private get; set; }
-        public uint FullChargedCapacity { private get; set; }
-        public uint EstimatedChargeRemaining { private get; set; }
+        /// <summary>
+        /// Battery full capacity. Used for calculation battery health.
+        /// </summary>
+        public UInt32 DesignedCapacity { private get; set; }
+        public UInt32 FullChargedCapacity { private get; set; }
+        public UInt16 EstimatedChargeRemaining { private get; set; }
     }
 }
