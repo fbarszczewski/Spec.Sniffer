@@ -48,6 +48,15 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
+        <Style TargetType="{x:Type Label}" x:Key="BatteryLabel">
+            <Setter Property="FontFamily" Value="Leelawadee UI Semilight"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="Margin" Value="15,0,0,0"/>
+
+
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -90,7 +99,7 @@
 
                             <Grid Grid.Column="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="4*"/>
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
 
@@ -123,10 +132,9 @@
                                     </Grid>
                                 </Border>
 
-                                <Border x:Name="BatteryBorder"
+                                <Border x:Name="TestsBorder"
                                         Grid.Row="1"
                                         Style="{StaticResource TabItemBorder}">
-
 
                                         <Grid Margin="5">
                                             <Grid.ColumnDefinitions>
@@ -134,47 +142,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <StackPanel Grid.Column="0">
-                                                <Label Content="{Binding Batteries.BatteryList[0].Name}"
-                                                       FontSize="22"/>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Health: "/>
-                                                    <Label Content="80%"/>
-                                                </StackPanel>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Power Left: "/>
-                                                    <Label Content="50%"/>
-                                                </StackPanel>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Charging: "/>
-                                                    <Label Content="Yes"/>
-                                                </StackPanel>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Charge Rate: "/>
-                                                    <Label Content="10928"/>
-                                                </StackPanel>
-                                            </StackPanel>
-
-                                            <StackPanel Grid.Column="1">
-                                                <Label Content="Second Battery"
-                                                       FontSize="22"/>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Health: "/>
-                                                    <Label Content="80%"/>
-                                                </StackPanel>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Power Left: "/>
-                                                    <Label Content="50%"/>
-                                                </StackPanel>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Charging: "/>
-                                                    <Label Content="Yes"/>
-                                                </StackPanel>
-                                                <StackPanel  Orientation="Horizontal">
-                                                    <Label Content="Charge Rate: "/>
-                                                    <Label Content="10928"/>
-                                                </StackPanel>
-                                            </StackPanel>
+                                            
 
 
                                             <StackPanel Grid.Column="1">
@@ -190,64 +158,87 @@
 
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="4*"/>
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
 
 
 
                                 <Grid Grid.Row="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-                                    <Border x:Name="TestsBorder"
-                                        Grid.Column="0"
-                                        Style="{StaticResource TabItemBorder}">
+                                    <Border  x:Name="StatusBorder"
+                                             Grid.Row="0"
+                                             Style="{StaticResource TabItemBorder}">
 
-                                        <StackPanel>
-                                                <Label Content="Device Tests"
-                                                       FontSize="22"/>
-                                            
-                                            <Button x:Name="ScreenTestBtn"
-                                                    Content="Screen Test"/>
-                                            <Button x:Name="AudioTestBtn"
-                                                    Content="Audio Test"/>
-                                            <Button x:Name="MicTestBtn"
-                                                    Content="Microphone Test"/>
-                                            <Button x:Name="KeyboardTestBtn"
-                                                    Content="Keyboard Test"/>
-
-                                        </StackPanel>
-
+                                        <Label Content="Device Status" FontSize="22"></Label>
                                     </Border>
 
-                                    <Border x:Name="StatusBorder"
-                                            Grid.Column="1"
-                                            Style="{StaticResource TabItemBorder}">
+                                    <Border  x:Name="BatteryBorder"
+                                             Grid.Row="1">
+                                             
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border x:Name="Battery1Border"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource TabItemBorder}">
+
+                                                
+
+                                                <StackPanel >
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="pack://siteoforigin:,,,/Resources/battery.png" Height="25" Width="25"/>
+                                                        <Label Content="{Binding Batteries.BatteryList[0].Name}"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="ID: " Style="{StaticResource BatteryLabel}"/>
+                                                        <Label Content="{Binding Batteries.BatteryList[0].UniqueId}" Style="{StaticResource BatteryLabel}"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Health: " Style="{StaticResource BatteryLabel}"/>
+                                                        <Label Content="{Binding Batteries.BatteryList[0].Health}" Style="{StaticResource BatteryLabel}"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Power Left: " Style="{StaticResource BatteryLabel}"/>
+                                                        <Label Content="{Binding Batteries.BatteryList[0].PowerRemaining}" Style="{StaticResource BatteryLabel}"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Is Charging: " Style="{StaticResource BatteryLabel}"/>
+                                                        <Label Content="{Binding Batteries.BatteryList[0].IsCharging}" Style="{StaticResource BatteryLabel}"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Charge Rate: " Style="{StaticResource BatteryLabel}"/>
+                                                        <Label Content="{Binding Batteries.BatteryList[0].ChargeRate}" Style="{StaticResource BatteryLabel}"/>
+                                                    </StackPanel>
 
 
-                                        <StackPanel>
-                                                <Label Content="Device Status"
-                                                       FontSize="22"/>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="Internet connection: "/>
-                                                <Label Content="OK"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="S.M.A.R.T. Status: "/>
-                                                <Label Content="OK"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="Device's Status: "/>
-                                                <Label Content="OK"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="Battery Status: "/>
-                                                <Label Content="OK"/>
-                                            </StackPanel>
-                                        </StackPanel>
+
+                                                </StackPanel>
+
+
+                                            </Border>
+
+                                            <Border x:Name="Battery2Border"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource TabItemBorder}">
+
+                                            </Border>
+
+                                        </Grid>
 
                                     </Border>
 
