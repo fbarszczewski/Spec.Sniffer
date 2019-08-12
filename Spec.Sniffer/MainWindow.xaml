@@ -135,7 +135,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel Grid.Column="0">
-                                                <Label Content="First Battery"
+                                                <Label Content="{Binding Batteries.BatteryList[0].Name}"
                                                        FontSize="22"/>
                                                 <StackPanel  Orientation="Horizontal">
                                                     <Label Content="Health: "/>

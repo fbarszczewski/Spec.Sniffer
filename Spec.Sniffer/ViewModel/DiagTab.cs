@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Threading;
 using Spec.Sniffer.Model;
+using Spec.Sniffer.Model.Battery;
 using Spec.Sniffer.Model.Camera;
 
 namespace Spec.Sniffer.ViewModel
@@ -29,7 +31,6 @@ namespace Spec.Sniffer.ViewModel
         private readonly DispatcherTimer _tuneTimer = new DispatcherTimer();
 
         #endregion
-
 
         #region Microphone
 
@@ -110,7 +111,6 @@ namespace Spec.Sniffer.ViewModel
 
         #endregion
 
-
         #region Camera
 
         public IEnumerable<MediaInformation> MediaDeviceList
@@ -144,6 +144,12 @@ namespace Spec.Sniffer.ViewModel
 
         #endregion
 
+        #region Battery
+
+        public BatteryStatus Batteries { get; set; }=new BatteryStatus();
+
+
+        #endregion
 
         #region INotify Property handler
 

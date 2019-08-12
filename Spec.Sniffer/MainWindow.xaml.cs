@@ -27,16 +27,7 @@ namespace Spec.Sniffer
             BatteryStatus battery=new BatteryStatus();
 
 
-            foreach (var batt in battery.Batteries)
-            {
-                MessageBox.Show($"" +
-                                $"Name: {batt.Name}\n" +
-                                $"UniqueId: {batt.UniqueId}\n"+
-                                $"Health: {batt.Health}\n"+
-                                $"IsCharging: {batt.IsCharging}\n"+
-                                $"ChargeRate: {batt.ChargeRate}\n"+
-                                $"PowerRemaining: {batt.PowerRemaining}\n");
-            }
+            
 
         }
     }
