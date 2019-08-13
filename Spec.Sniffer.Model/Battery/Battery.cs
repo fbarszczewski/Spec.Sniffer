@@ -4,7 +4,7 @@ namespace Spec.Sniffer.Model.Battery
 {
     public class Battery : INotifyPropertyChanged
     {
-        private int _chargeRate;
+        private string _chargeRate;
         private uint _designedCapacity;
         private ushort _estimatedChargeRemaining;
         private bool _isCharging;
@@ -17,7 +17,7 @@ namespace Spec.Sniffer.Model.Battery
             UniqueId = "no ID";
             EstimatedChargeRemaining = 0;
             IsCharging = false;
-            ChargeRate = 0;
+            ChargeRate = "0";
             DesignedCapacity = 0;
             FullChargedCapacity = 0;
         }
@@ -71,7 +71,7 @@ namespace Spec.Sniffer.Model.Battery
         /// <summary>
         ///     Current capacity remaining in %.
         /// </summary>
-        public string PowerRemaining => EstimatedChargeRemaining < 100 ? $"{EstimatedChargeRemaining}%" : "100%";
+        public string PowerRemaining => EstimatedChargeRemaining < 100 ? $"{EstimatedChargeRemaining}%  {ChargeRate}" : $"100% {ChargeRate}";
 
         /// <summary>
         ///     Is battery charging.
@@ -89,7 +89,7 @@ namespace Spec.Sniffer.Model.Battery
         /// <summary>
         ///     Charge or discharge rate. In mWh.
         /// </summary>
-        public int ChargeRate
+        public string ChargeRate
         {
             get => _chargeRate;
             set

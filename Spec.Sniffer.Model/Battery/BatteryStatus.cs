@@ -116,12 +116,12 @@ namespace Spec.Sniffer.Model.Battery
                         {
                             case true:
                                 BatteryList[_batteryId].IsCharging = true;
-                                BatteryList[_batteryId].ChargeRate = (int) obj["ChargeRate"];
+                                BatteryList[_batteryId].ChargeRate = $"+{obj["ChargeRate"]}";
                                 break;
 
                             case false:
                                 BatteryList[_batteryId].IsCharging = false;
-                                BatteryList[_batteryId].ChargeRate = -(int) obj["DischargeRate"];
+                                BatteryList[_batteryId].ChargeRate = $"-{obj["DischargeRate"]}";
                                 break;
                         }
 

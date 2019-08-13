@@ -139,7 +139,8 @@ namespace Spec.Sniffer.ViewModel
         private void CameraLoad()
         {
             MediaDeviceList = WebcamDevice.GetVideoDevices;
-            SelectedVideoDevice = MediaDeviceList.FirstOrDefault();
+            //SelectedVideoDevice = MediaDeviceList.FirstOrDefault();
+            SelectedVideoDevice = null;
         }
 
         #endregion

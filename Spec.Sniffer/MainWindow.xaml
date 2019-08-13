@@ -50,7 +50,7 @@
 
         <Style TargetType="{x:Type Label}" x:Key="BatteryLabel">
             <Setter Property="FontFamily" Value="Leelawadee UI Semilight"/>
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="0,0,0,0"/>
             <Setter Property="Padding" Value="2,4,0,0"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -61,9 +61,9 @@
             <Setter Property="FontFamily" Value="Leelawadee UI"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Opacity" Value="0.7"/>
-            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="FontSize" Value="21"/>
             <Setter Property="Padding" Value="3"/>
-            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="Margin" Value="0,1,0,0"/>
         </Style>
         <Style TargetType="{x:Type Image}" x:Key="HeaderImage">
             <Setter Property="Height" Value="35"/>
@@ -173,8 +173,8 @@
 
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="3*"/>
-                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
 
 
@@ -208,7 +208,7 @@
 
                                                 <StackPanel>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="pack://siteoforigin:,,,/Resources/battery.png" Height="35" Width="35" RenderTransformOrigin="0.5,0.5" Style="{StaticResource HeaderImage}">
+                                                        <Image Source="pack://siteoforigin:,,,/Resources/battery.png" Height="39" Width="39" RenderTransformOrigin="0.5,0.5" Style="{StaticResource HeaderImage}">
                                                             <Image.RenderTransform>
                                                                 <TransformGroup>
                                                                     <ScaleTransform/>
@@ -220,13 +220,12 @@
                                                         </Image>
                                                         <Label Content="Main Battery"
                                                                Style="{StaticResource HeaderLabel}"/>
-
-
+                                                        <Label Content="{Binding Batteries.BatteryList[0].Health}"
+                                                               Style="{StaticResource HeaderLabel}"
+                                                               HorizontalAlignment="Left"/>
                                                     </StackPanel>
 
-
-
-                                                    <Grid MaxHeight="145">
+                                                    <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="*"/>
                                                             <RowDefinition Height="*"/>
@@ -235,58 +234,39 @@
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="89*"/>
-                                                            <ColumnDefinition Width="216*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="5*"/>
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Content="Name:"
                                                                Grid.Column="0" Grid.Row="0"
-                                                               Style="{StaticResource BatteryLabel}" Width="47"/>
+                                                               Style="{StaticResource BatteryLabel}"/>
                                                         <Label Content="Serial:"
                                                                Grid.Column="0" Grid.Row="1"
-                                                               Style="{StaticResource BatteryLabel}" Width="43"/>
-                                                        <Label Content="Health:"
-                                                               Grid.Column="0" Grid.Row="2"
-                                                               Style="{StaticResource BatteryLabel}" Width="50"/>
+                                                               Style="{StaticResource BatteryLabel}"/>
                                                         <Label Content="Power:"
-                                                               Grid.Column="0" Grid.Row="3"
-                                                               Style="{StaticResource BatteryLabel}" Width="48"/>
-                                                        <Label Content="Charge:"
-                                                               Grid.Column="0" Grid.Row="4"
-                                                               Style="{StaticResource BatteryLabel}" Width="55"/>
+                                                               Grid.Column="0" Grid.Row="2"
+                                                               Style="{StaticResource BatteryLabel}"/>
 
 
                                                         <Label Content="{Binding Batteries.BatteryList[0].Name}"
                                                                Grid.Column="1" Grid.Row="0"
                                                                Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="69"/>
+                                                               HorizontalAlignment="Left"/>
 
                                                         <Label Content="{Binding Batteries.BatteryList[0].UniqueId}"
                                                                Grid.Column="1" Grid.Row="1"
                                                                Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="39"/>
+                                                               HorizontalAlignment="Left"/>
 
-                                                        <Label Content="{Binding Batteries.BatteryList[0].Health}"
+                                                        <Label Content="{Binding Batteries.BatteryList[0].PowerRemaining}"
                                                                Grid.Column="1" Grid.Row="2"
                                                                Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="23"/>
-                                                        <Label Content="{Binding Batteries.BatteryList[0].PowerRemaining}"
-                                                               Grid.Column="1" Grid.Row="3"
-                                                               Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="23"/>
-                                                        <Label Content="{Binding Batteries.BatteryList[0].ChargeRate}"
-                                                               Grid.Column="1" Grid.Row="4"
-                                                               Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="10"/>
-
+                                                               HorizontalAlignment="Left"/>
 
                                                     </Grid>
 
-
                                                 </StackPanel>
-
-
-
 
                                             </Border>
 
@@ -296,7 +276,7 @@
 
                                                 <StackPanel>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="pack://siteoforigin:,,,/Resources/battery.png" Height="35" Width="35" RenderTransformOrigin="0.5,0.5" Style="{StaticResource HeaderImage}">
+                                                        <Image Source="pack://siteoforigin:,,,/Resources/battery.png" Height="39" Width="39" RenderTransformOrigin="0.5,0.5" Style="{StaticResource HeaderImage}">
                                                             <Image.RenderTransform>
                                                                 <TransformGroup>
                                                                     <ScaleTransform/>
@@ -308,13 +288,12 @@
                                                         </Image>
                                                         <Label Content="Secondary Battery"
                                                                Style="{StaticResource HeaderLabel}"/>
-
-
+                                                        <Label Content="{Binding Batteries.BatteryList[1].Health}"
+                                                               Style="{StaticResource HeaderLabel}"
+                                                               HorizontalAlignment="Left"/>
                                                     </StackPanel>
 
-
-
-                                                    <Grid MaxHeight="145">
+                                                    <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="*"/>
                                                             <RowDefinition Height="*"/>
@@ -323,59 +302,41 @@
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="89*"/>
-                                                            <ColumnDefinition Width="216*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="5*"/>
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Content="Name:"
                                                                Grid.Column="0" Grid.Row="0"
-                                                               Style="{StaticResource BatteryLabel}" Width="47"/>
+                                                               Style="{StaticResource BatteryLabel}"/>
                                                         <Label Content="Serial:"
                                                                Grid.Column="0" Grid.Row="1"
-                                                               Style="{StaticResource BatteryLabel}" Width="43"/>
-                                                        <Label Content="Health:"
-                                                               Grid.Column="0" Grid.Row="2"
-                                                               Style="{StaticResource BatteryLabel}" Width="50"/>
+                                                               Style="{StaticResource BatteryLabel}"/>
                                                         <Label Content="Power:"
-                                                               Grid.Column="0" Grid.Row="3"
-                                                               Style="{StaticResource BatteryLabel}" Width="48"/>
-                                                        <Label Content="Charge:"
-                                                               Grid.Column="0" Grid.Row="4"
-                                                               Style="{StaticResource BatteryLabel}" Width="55"/>
+                                                               Grid.Column="0" Grid.Row="2"
+                                                               Style="{StaticResource BatteryLabel}"/>
 
 
-                                                        <Label Content="{Binding Batteries.BatteryList[0].Name}"
+                                                        <Label Content="{Binding Batteries.BatteryList[1].Name}"
                                                                Grid.Column="1" Grid.Row="0"
                                                                Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="69"/>
+                                                               HorizontalAlignment="Left"/>
 
-                                                        <Label Content="{Binding Batteries.BatteryList[0].UniqueId}"
+                                                        <Label Content="{Binding Batteries.BatteryList[1].UniqueId}"
                                                                Grid.Column="1" Grid.Row="1"
                                                                Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="39"/>
+                                                               HorizontalAlignment="Left"/>
 
-                                                        <Label Content="{Binding Batteries.BatteryList[0].Health}"
+                                                        <Label Content="{Binding Batteries.BatteryList[1].PowerRemaining}"
                                                                Grid.Column="1" Grid.Row="2"
                                                                Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="23"/>
-                                                        <Label Content="{Binding Batteries.BatteryList[0].PowerRemaining}"
-                                                               Grid.Column="1" Grid.Row="3"
-                                                               Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="23"/>
-                                                        <Label Content="{Binding Batteries.BatteryList[0].ChargeRate}"
-                                                               Grid.Column="1" Grid.Row="4"
-                                                               Style="{StaticResource BatteryLabel}"
-                                                               HorizontalAlignment="Left" Width="10"/>
-
+                                                               HorizontalAlignment="Left"/>
 
                                                     </Grid>
 
-
                                                 </StackPanel>
 
-
                                             </Border>
-
                                         </Grid>
 
                                     </Border>
