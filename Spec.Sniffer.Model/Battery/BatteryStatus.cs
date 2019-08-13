@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Management;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -42,6 +43,10 @@ namespace Spec.Sniffer.Model.Battery
 
         private void LoadAll()
         {
+            #region Old Way
+
+            //Not working well. Not all batteries got data in BatteryStatus.
+
             //check if namespace win32_battery exists.
             if (ReadCimv2Win32_Battery())
             {
@@ -53,6 +58,15 @@ namespace Spec.Sniffer.Model.Battery
                     ReadWmiBatteryStaticData();
                 }
             }
+            #endregion
+            if (ReadCimv2Win32_Battery())
+            {
+                ReadWmiBatteryStatus();
+                //preserve order of this two methods!!
+                ReadWmiBatteryFullChargedCapacity();
+                ReadWmiBatteryStaticData();
+            }
+
         }
 
         /// <summary>

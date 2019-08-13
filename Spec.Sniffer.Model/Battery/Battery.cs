@@ -14,7 +14,7 @@ namespace Spec.Sniffer.Model.Battery
         public Battery()
         {
             Name = "No Name";
-            UniqueId = "no ID";
+            UniqueId = "noID";
             EstimatedChargeRemaining = 0;
             IsCharging = false;
             ChargeRate = "0";

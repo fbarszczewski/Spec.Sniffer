@@ -73,6 +73,36 @@ namespace Spec.Sniffer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DeviceStatus {
+            get {
+                object obj = ResourceManager.GetObject("DeviceStatus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ethernet {
+            get {
+                object obj = ResourceManager.GetObject("Ethernet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hdd {
+            get {
+                object obj = ResourceManager.GetObject("hdd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MicPlay {
             get {
                 object obj = ResourceManager.GetObject("MicPlay", resourceCulture);
@@ -96,6 +126,16 @@ namespace Spec.Sniffer.Properties {
         internal static System.Drawing.Bitmap MicStop {
             get {
                 object obj = ResourceManager.GetObject("MicStop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap network {
+            get {
+                object obj = ResourceManager.GetObject("network", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +166,26 @@ namespace Spec.Sniffer.Properties {
         internal static System.Drawing.Bitmap speakersOn {
             get {
                 object obj = ResourceManager.GetObject("speakersOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unallocated {
+            get {
+                object obj = ResourceManager.GetObject("unallocated", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wifi {
+            get {
+                object obj = ResourceManager.GetObject("Wifi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
