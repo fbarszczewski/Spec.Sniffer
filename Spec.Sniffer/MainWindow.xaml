@@ -173,115 +173,57 @@
 
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="173*"/>
-                                    <RowDefinition Height="116*"/>
+                                    <RowDefinition Height="229"/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
 
                                 <Grid Grid.Row="0">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="87"/>
+                                        <RowDefinition/>
                                     </Grid.RowDefinitions>
 
                                     <Border  x:Name="StatusBorder"
-                                             Grid.Row="0">
+                                             Grid.Row="0"
+                                             Style="{StaticResource TabItemBorder}">
 
-                                        <Grid>
+                                        <Grid Margin="5,0,0,0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                            </Grid.RowDefinitions>
 
-                                            <Border x:Name="NetworkBorder"
-                                                    Grid.Column="0"
-                                                    Style="{StaticResource TabItemBorder}">
-
-
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="40"/>
-                                                    </Grid.RowDefinitions>
-
-                                                        <Label Content="Network"
-                                                               Grid.Row="0"
-                                                               Style="{StaticResource HeaderLabel}"
-                                                               HorizontalAlignment="Left"
-                                                               Margin="5,0,0,0"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                                <Image Source="pack://siteoforigin:,,,/Resources/DeviceStatus.png" 
+                                                       Style="{StaticResource HeaderImage}"
+                                                       Width="30"
+                                                       Margin="3,2,6,4"/>
+                                                <Label Content="Device Status"
+                                                       Style="{StaticResource HeaderLabel}"
+                                                       HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                            
 
 
-                                                        <StackPanel Grid.Row="1"
-                                                            Orientation="Horizontal">
-                                                            <Image Source="pack://siteoforigin:,,,/Resources/network.png"
-                                                                   Style="{StaticResource HeaderImage}" Margin="10,0"
-                                                                   Width="25"/>
-                                                            <Label Content="Connected"/>
-                                                        </StackPanel>
-                                                        
-                                                        <StackPanel Grid.Row="2"
-                                                                    Orientation="Horizontal">
-                                                            <Image Source="pack://siteoforigin:,,,/Resources/Ethernet.png"
-                                                                   Style="{StaticResource HeaderImage}" Margin="10,0"
-                                                                   Width="25"/>
-                                                            <Label Content="Connected"/>
-                                                        </StackPanel>
-                                                        <StackPanel Grid.Row="3"
-                                                                    Orientation="Horizontal">
-                                                            <Image Source="pack://siteoforigin:,,,/Resources/Wifi.png"
-                                                                   Style="{StaticResource HeaderImage}" Margin="10,0"
-                                                                   Width="25"/>
-                                                            <Label Content="Connected"/>
-                                                        </StackPanel>
+                                            <StackPanel Grid.Row="1" Grid.Column="0"
+                                                        Orientation="Horizontal">
+                                                <Label Content="Network: "/>
+                                                <Label Content="Connected"/>
+                                            </StackPanel>
 
-                                                </Grid>
-                                                
-                                            </Border>
+                                            <StackPanel Grid.Row="1" Grid.Column="1" 
+                                                        Orientation="Horizontal">
+                                                <Label Content="S.M.A.R.T.: "/>
+                                                <Label Content="OK"/>
+                                            </StackPanel>
 
-                                            <Border x:Name="HddBorder"
-                                                    Grid.Column="1"
-                                                    Style="{StaticResource TabItemBorder}">
-
-
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="40"/>
-                                                        <RowDefinition Height="40"/>
-                                                    </Grid.RowDefinitions>
-
-                                                        <Label Content="Storage"
-                                                               Grid.Row="0"
-                                                               Style="{StaticResource HeaderLabel}"
-                                                               HorizontalAlignment="Left"
-                                                               Margin="5,0,0,0"/>
-
-
-                                                        <StackPanel Grid.Row="1"
-                                                            Orientation="Horizontal">
-                                                            <Image Source="pack://siteoforigin:,,,/Resources/network.png"
-                                                                   Style="{StaticResource HeaderImage}" Margin="10,0"
-                                                                   Width="25"/>
-                                                            <Label Content="Connected"/>
-                                                        </StackPanel>
-                                                        
-                                                        <StackPanel Grid.Row="2"
-                                                                    Orientation="Horizontal">
-                                                            <Image Source="pack://siteoforigin:,,,/Resources/Ethernet.png"
-                                                                   Style="{StaticResource HeaderImage}" Margin="10,0"
-                                                                   Width="25"/>
-                                                            <Label Content="Connected"/>
-                                                        </StackPanel>
-
-
-                                                </Grid>
-                                                
-                                            </Border>
 
                                         </Grid>
-
                                     </Border>
 
 
@@ -332,7 +274,7 @@
                                                         <Label Content="Name:"
                                                                Grid.Column="0" Grid.Row="0"
                                                                Style="{StaticResource BatteryLabel}"/>
-                                                        <Label Content="Serial:"
+                                                        <Label Content="Serial: "
                                                                Grid.Column="0" Grid.Row="1"
                                                                Style="{StaticResource BatteryLabel}"/>
                                                         <Label Content="Power:"
@@ -399,7 +341,7 @@
                                                         <Label Content="Name:"
                                                                Grid.Column="0" Grid.Row="0"
                                                                Style="{StaticResource BatteryLabel}"/>
-                                                        <Label Content="Serial:"
+                                                        <Label Content="Serial: "
                                                                Grid.Column="0" Grid.Row="1"
                                                                Style="{StaticResource BatteryLabel}"/>
                                                         <Label Content="Power:"
@@ -438,9 +380,24 @@
                                         Style="{StaticResource TabItemBorder}">
 
 
-                                    <Label Content="Faulty Devices"
-                                               Margin="5,0,320,10"
-                                               FontSize="22"/>
+                                            <Grid Margin="5,0,0,0">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                                <Image Source="pack://siteoforigin:,,,/Resources/DriversError.png" 
+                                                       Style="{StaticResource HeaderImage}"
+                                                       Width="30"
+                                                       Margin="3,2,6,4"/>
+                                                <Label Content="Drivers Errors"
+                                                       Style="{StaticResource HeaderLabel}"
+                                                       HorizontalAlignment="Left"/>
+                                            </StackPanel>
+                                            
+                                        </Grid>
 
                                 </Border>
 
