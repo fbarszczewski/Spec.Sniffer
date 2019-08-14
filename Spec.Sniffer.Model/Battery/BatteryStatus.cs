@@ -13,14 +13,16 @@ namespace Spec.Sniffer.Model.Battery
         private int _batteryId;
         private readonly DispatcherTimer _timer;
 
-        public BatteryStatus()
+        public BatteryStatus(int timeSpan)
         {
             _wmiSearcher = new ManagementObjectSearcher();
             _timer = new DispatcherTimer();
             BatteryList = new ObservableCollection<Battery> {new Battery(), new Battery()};
 
             LoadAll();
-            StartTimer();
+            _timer.Interval = TimeSpan.FromSeconds(timeSpan);
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
         }
 
         public ObservableCollection<Battery> BatteryList { get; set; }
@@ -29,12 +31,7 @@ namespace Spec.Sniffer.Model.Battery
         /// <summary>
         /// Timer to refresh battery info.
         /// </summary>
-        private void StartTimer()
-        {
-            _timer.Interval = TimeSpan.FromSeconds(2);
-            _timer.Tick += Timer_Tick;
-            _timer.Start();
-        }
+
 
         private void Timer_Tick(object sender, EventArgs e)
         { 

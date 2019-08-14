@@ -396,8 +396,43 @@
                                                        Style="{StaticResource HeaderLabel}"
                                                        HorizontalAlignment="Left"/>
                                             </StackPanel>
-                                            
-                                        </Grid>
+
+
+                                        <DataGrid ItemsSource="{Binding Drivers.FaultyDrivers}"
+                                                  Grid.Row="1"
+                                                  FontSize="12"
+                                                  AutoGenerateColumns="False"
+                                                  SelectionMode="Single"
+                                                  RowDetailsVisibilityMode="Visible"
+                                                  AlternatingRowBackground="LightGray"
+                                                  GridLinesVisibility="None"
+                                                  CanUserAddRows="false"
+                                                  Margin="10">
+
+                                            <DataGrid.Columns >
+                                                <DataGridTextColumn Header="Faulty Device's" 
+                                                    Binding="{Binding Caption}"
+                                                    Width="*" 
+                                                    IsReadOnly="True" 
+                                                    FontFamily="Yu Gothic UI" 
+                                                    FontWeight="Bold"/>
+
+                                                <DataGridTextColumn Header="ID" 
+                                                    Binding="{Binding ErrorCode}"
+                                                    Width="30" 
+                                                    FontFamily="Yu Gothic UI"
+                                                    FontWeight="Bold"
+                                                    IsReadOnly="True"/>
+                                            </DataGrid.Columns>
+                                            <DataGrid.RowDetailsTemplate>
+                                                <DataTemplate >
+                                                    <TextBlock  Text="{Binding ErrorMessage}" Margin="10,0,0,0"/>
+                                                </DataTemplate>
+                                            </DataGrid.RowDetailsTemplate>
+
+                                        </DataGrid>
+
+                                    </Grid>
 
                                 </Border>
 

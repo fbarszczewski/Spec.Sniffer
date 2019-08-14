@@ -24,11 +24,6 @@ namespace Spec.Sniffer
         public MainWindow()
         {
             InitializeComponent();
-            BatteryStatus battery=new BatteryStatus();
-
-
-            
-
         }
     }
 }

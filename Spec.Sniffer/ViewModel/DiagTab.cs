@@ -146,10 +146,12 @@ namespace Spec.Sniffer.ViewModel
         #endregion
 
         #region Battery
+        public BatteryStatus Batteries { get; set; } =new BatteryStatus(2);
 
-        public BatteryStatus Batteries { get; set; }=new BatteryStatus();
+        #endregion
 
-
+        #region Drivers Status
+        public DriversStatus Drivers { get; set; } = new DriversStatus(2);
         #endregion
 
         #region INotify Property handler
