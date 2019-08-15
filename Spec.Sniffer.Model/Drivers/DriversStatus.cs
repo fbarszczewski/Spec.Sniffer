@@ -14,25 +14,23 @@ namespace Spec.Sniffer.Model
 {
     public class DriversStatus: INotifyPropertyChanged
     {
-        private readonly DispatcherTimer _timer;
-        private List<Driver> faultyDrivers;
+        private List<Driver> _faultyDrivers;
 
         public List<Driver> FaultyDrivers
         {
-            get => faultyDrivers;
+            get => _faultyDrivers;
             set
             {
-                faultyDrivers = value;
+                _faultyDrivers = value;
                 RaisePropertyChanged("FaultyDrivers");
             }
         }
 
         public DriversStatus(int timersSpan)
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(timersSpan);
-            _timer.Tick += Timer_Tick;
-            _timer.Start();
+            var timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(timersSpan)};
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
         private List<Driver> GetDriversList()

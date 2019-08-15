@@ -146,7 +146,7 @@ namespace Spec.Sniffer.ViewModel
         #endregion
 
         #region Battery
-        public BatteryStatus Batteries { get; set; } =new BatteryStatus(2);
+        public BatteryStatus Batteries { get; set; } =new BatteryStatus(200);
 
         #endregion
 

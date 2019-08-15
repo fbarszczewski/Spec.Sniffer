@@ -72,6 +72,15 @@
             <Setter Property="Margin" Value="5,0,0,0"/>
         </Style>
 
+
+        <Style TargetType="{x:Type DataGridRowHeader}">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}"  >
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -207,7 +216,7 @@
                                                        Style="{StaticResource HeaderLabel}"
                                                        HorizontalAlignment="Left"/>
                                             </StackPanel>
-                                            
+
 
 
                                             <StackPanel Grid.Row="1" Grid.Column="0"
@@ -380,49 +389,45 @@
                                         Style="{StaticResource TabItemBorder}">
 
 
-                                            <Grid Margin="5,0,0,0">
+                                    <Grid Margin="5,0,0,0">
 
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="40"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="31"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                            <StackPanel Orientation="Horizontal" Grid.Row="0">
-                                                <Image Source="pack://siteoforigin:,,,/Resources/DriversError.png" 
+                                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                            <Image Source="pack://siteoforigin:,,,/Resources/DriversError.png" 
                                                        Style="{StaticResource HeaderImage}"
                                                        Width="30"
-                                                       Margin="3,2,6,4"/>
-                                                <Label Content="Drivers Errors"
+                                                       Margin="3,4,6,0"/>
+                                            <Label Content="Drivers Errors"
                                                        Style="{StaticResource HeaderLabel}"
                                                        HorizontalAlignment="Left"/>
-                                            </StackPanel>
-
+                                        </StackPanel>
 
                                         <DataGrid ItemsSource="{Binding Drivers.FaultyDrivers}"
                                                   Grid.Row="1"
-                                                  FontSize="12"
+                                                  Margin="5,-5,5,5"
                                                   AutoGenerateColumns="False"
-                                                  SelectionMode="Single"
                                                   RowDetailsVisibilityMode="Visible"
-                                                  AlternatingRowBackground="LightGray"
-                                                  GridLinesVisibility="None"
-                                                  CanUserAddRows="false"
-                                                  Margin="10">
-
+                                                  CanUserAddRows="False"
+                                                  Background="Transparent"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="0"
+                                                  RowBackground="Transparent"
+                                                  GridLinesVisibility="None">
                                             <DataGrid.Columns >
-                                                <DataGridTextColumn Header="Faulty Device's" 
+
+
+                                                <DataGridTextColumn
                                                     Binding="{Binding Caption}"
-                                                    Width="*" 
                                                     IsReadOnly="True" 
                                                     FontFamily="Yu Gothic UI" 
-                                                    FontWeight="Bold"/>
+                                                    FontWeight="Bold">
 
-                                                <DataGridTextColumn Header="ID" 
-                                                    Binding="{Binding ErrorCode}"
-                                                    Width="30" 
-                                                    FontFamily="Yu Gothic UI"
-                                                    FontWeight="Bold"
-                                                    IsReadOnly="True"/>
+                                                </DataGridTextColumn>
+
                                             </DataGrid.Columns>
                                             <DataGrid.RowDetailsTemplate>
                                                 <DataTemplate >
@@ -431,6 +436,8 @@
                                             </DataGrid.RowDetailsTemplate>
 
                                         </DataGrid>
+
+
 
                                     </Grid>
 
