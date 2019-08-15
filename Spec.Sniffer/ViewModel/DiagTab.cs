@@ -16,6 +16,8 @@ namespace Spec.Sniffer.ViewModel
     {
         public DiagTab()
         {
+            InternetStatusSet();
+            InternetTimer();
             CameraLoad();
             _testTune = new AudioTest($"{Directory.GetCurrentDirectory()}\\Resources\\ShortTone.mp3");
             MicBtnIsChecked = false;
@@ -29,6 +31,8 @@ namespace Spec.Sniffer.ViewModel
         private readonly AudioTest _testTune;
         private bool? _micBtnIsChecked;
         private readonly DispatcherTimer _tuneTimer = new DispatcherTimer();
+        private readonly DispatcherTimer _internetTimer = new DispatcherTimer();
+        private string _internetStatus;
 
         #endregion
 
@@ -146,13 +150,42 @@ namespace Spec.Sniffer.ViewModel
         #endregion
 
         #region Battery
-        public BatteryStatus Batteries { get; set; } =new BatteryStatus(200);
+        public BatteryStatus Batteries { get; set; } =new BatteryStatus(2);
+
 
         #endregion
 
         #region Drivers Status
-        public DriversStatus Drivers { get; set; } = new DriversStatus(2);
+        public DriversStatus Drivers { get; set; } = new DriversStatus(5);
         #endregion
+
+        #region Internet status
+
+        public string InternetStatus
+        {
+            get => _internetStatus;
+
+            set { _internetStatus = value; RaisePropertyChanged("InternetStatus"); }
+        }
+
+        private void InternetTimer()
+        {
+            _internetTimer.Interval = TimeSpan.FromSeconds(2);
+            _internetTimer.Tick += Internet_Tick;
+            _internetTimer.Start();
+        }
+
+        private void Internet_Tick(object sender, EventArgs e)
+        {
+            InternetStatusSet();
+        }
+
+        private void InternetStatusSet()
+        {
+            InternetStatus = Internet.IsConnected() ? "Connected" : "Disconnected";
+        }
+
+        #endregion        
 
         #region INotify Property handler
 

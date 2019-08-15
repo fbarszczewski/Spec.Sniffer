@@ -28,6 +28,7 @@ namespace Spec.Sniffer.Model
 
         public DriversStatus(int timersSpan)
         {
+            RefreshDrivers();
             var timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(timersSpan)};
             timer.Tick += Timer_Tick;
             timer.Start();
