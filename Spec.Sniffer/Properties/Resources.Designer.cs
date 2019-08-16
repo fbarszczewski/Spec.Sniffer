@@ -111,6 +111,26 @@ namespace Spec.Sniffer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HDTune {
+            get {
+                object obj = ResourceManager.GetObject("HDTune", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] KeyboardTest {
+            get {
+                object obj = ResourceManager.GetObject("KeyboardTest", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap MicPlay {
@@ -156,6 +176,16 @@ namespace Spec.Sniffer.Properties {
         internal static byte[] ShortTone {
             get {
                 object obj = ResourceManager.GetObject("ShortTone", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ShowKey {
+            get {
+                object obj = ResourceManager.GetObject("ShowKey", resourceCulture);
                 return ((byte[])(obj));
             }
         }

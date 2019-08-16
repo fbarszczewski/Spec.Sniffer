@@ -133,6 +133,12 @@
   <data name="hdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="HDTune" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HDTune.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KeyboardTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\KeyboardTest.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="MicPlay" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MicPlay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,6 +153,9 @@
   </data>
   <data name="ShortTone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ShortTone.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ShowKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShowKey.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="speakersOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\speakersOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

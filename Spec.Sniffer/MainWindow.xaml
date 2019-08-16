@@ -83,6 +83,7 @@
             <Setter Property="Opacity" Value="0.3"></Setter>
         </Style>
 
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 
     </Window.Resources>
 
@@ -144,6 +145,7 @@
                                             x:Name="CameraVideoDeviceControl"
                                             VideoPreviewWidth="auto"
                                             VideoPreviewHeight="auto"
+                                            Visibility="{Binding CamVisibility, Converter={StaticResource BoolToVisibility}}"
                                             VideoSourceId="{Binding SelectedVideoDevice, Converter={StaticResource MediaInformationConverter}}"/>
 
                                         <ComboBox Grid.Row="1"
@@ -200,7 +202,8 @@
                                     <ToggleButton x:Name="MicButton"
                                                   Grid.Column="1" Margin="5"
                                                   Background="Transparent"
-                                                  IsChecked="{Binding MicBtnIsChecked}" Opacity="0.8">
+                                                  IsChecked="{Binding MicBtnIsChecked}" Opacity="0.8"
+                                                  Command="{Binding MicRecordCommand}">
 
                                         <ToggleButton.Style>
                                             <Style TargetType="{x:Type ToggleButton}">
@@ -528,14 +531,14 @@
                                 Grid.Column="1" Margin="0,5,0,0">
 
                         <Button Content="LCD Test" Style="{StaticResource TabButton}" Command="{Binding LcdTestCommand}"/>
-                        <Button Content="Camera" Style="{StaticResource TabButton}"/>
-                        <Button Content="Audio" Style="{StaticResource TabButton}"/>
-                        <Button Content="Microphone" Style="{StaticResource TabButton}"/>
-                        <Button Content="Keyboard" Style="{StaticResource TabButton}"/>
-                        <Button Content="Device Manager" Style="{StaticResource TabButton}"/>
-                        <Button Content="Disk Manager" Style="{StaticResource TabButton}"/>
-                        <Button Content="HDD Tune" Style="{StaticResource TabButton}"/>
-                        <Button Content="ShowKey Plus" Style="{StaticResource TabButton}"/>
+                        <Button Content="Camera" Style="{StaticResource TabButton}" Command="{Binding CamCommand}"/>
+                        <Button Content="Audio" Style="{StaticResource TabButton}" Command="{Binding TuneCommand}"/>
+                        <Button Content="Microphone" Style="{StaticResource TabButton}" Command="{Binding MicRecordCommand}"/>
+                        <Button Content="Keyboard" Style="{StaticResource TabButton}" Command="{Binding KeyboardCommand}"/>
+                        <Button Content="Device Manager" Style="{StaticResource TabButton}" Command="{Binding DevmgmtCommand}"/>
+                        <Button Content="Disk Manager" Style="{StaticResource TabButton}" Command="{Binding DiskmgmtCommand}"/>
+                        <Button Content="HDD Tune" Style="{StaticResource TabButton}" Command="{Binding HdTuneCommand}"/>
+                        <Button Content="ShowKey Plus" Style="{StaticResource TabButton}" Command="{Binding ShowKeyCommand}"/>
 
                     </StackPanel>
 

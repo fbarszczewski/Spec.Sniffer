@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Spec.Sniffer.Model;
@@ -47,11 +49,8 @@ namespace Spec.Sniffer.ViewModel
             {
                 _micBtnIsChecked = value;
 
-                if (_micBtnIsChecked == true)
-                {
-                    var thread = new Thread(MicRecordTask);
-                    thread.Start();
-                }
+                //if (_micBtnIsChecked == true)
+                //    MicRecord();
 
                 RaisePropertyChanged("MicBtnIsChecked");
             }
@@ -60,6 +59,8 @@ namespace Spec.Sniffer.ViewModel
         private void MicRecordTask()
 
         {
+            MicBtnIsChecked = true;
+            _isRecording = true;
             var rec = new MicTest($"{Path.GetTempPath()}\\mictest.wav");
             rec.Start();
             Thread.Sleep(3000);
@@ -69,8 +70,20 @@ namespace Spec.Sniffer.ViewModel
             rec.Play();
             Thread.Sleep(3000);
             MicBtnIsChecked = false;
+            _isRecording = false;
         }
 
+        private bool _isRecording = false;
+        private void MicRecord()
+        {
+            if (_isRecording==false)
+            {
+                var thread = new Thread(MicRecordTask);
+                thread.Start();
+            }
+        }
+
+        public ICommand MicRecordCommand { get => new RelayCommand(argument =>MicRecord() ); }
         #endregion
 
         #region Tune
@@ -115,6 +128,7 @@ namespace Spec.Sniffer.ViewModel
             _tuneTimer.Stop();
         }
 
+        public ICommand TuneCommand { get => new RelayCommand(argument =>TuneBtnIsChecked=!TuneBtnIsChecked ); }
         #endregion
 
         #region Camera
@@ -141,18 +155,35 @@ namespace Spec.Sniffer.ViewModel
             }
         }
 
+        private bool _camVisibility;
+        private bool _micBtnIsEnabled;
+
+        public bool CamVisibility 
+        {
+            get => _camVisibility;
+
+            set
+            {
+                _camVisibility = value;
+                RaisePropertyChanged("CamVisibility");
+            }
+        }
+
+
         private void CameraButton()
         {
             if (SelectedVideoDevice == null)
             {
+                CamVisibility = true;
                 SelectedVideoDevice = MediaDeviceList.FirstOrDefault();
             }
             else
             {
-
+                CamVisibility = false;
+                SelectedVideoDevice = null;
             }
         }
-
+        public ICommand CamCommand { get => new RelayCommand(argument =>CameraButton() ); }
 
         private void CameraLoad()
         {
@@ -209,6 +240,67 @@ namespace Spec.Sniffer.ViewModel
             lcdTest.Show();
         }
         #endregion
+        public ICommand KeyboardCommand
+        {
+            get => new RelayCommand(argument => KeyboardTest());
+        }
+        private void KeyboardTest()
+        {
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = $"{Directory.GetCurrentDirectory()}\\Resources\\KeyboardTest.exe";
+                startInfo.Arguments = "-CS:2";
+                Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public ICommand DevmgmtCommand
+        {
+            get => new RelayCommand(argument => Process.Start("devmgmt.msc"));
+        }
+        public ICommand DiskmgmtCommand
+        {
+            get => new RelayCommand(argument => Process.Start("diskmgmt.msc"));
+        }
+        public ICommand HdTuneCommand
+        {
+            get => new RelayCommand(argument => HdTune());
+        }
+        private void HdTune()
+        {
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = $"{Directory.GetCurrentDirectory()}\\Resources\\HDTune.exe";
+                Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public ICommand ShowKeyCommand
+        {
+            get => new RelayCommand(argument => ShowKey());
+        }
+        private void ShowKey()
+        {
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = $"{Directory.GetCurrentDirectory()}\\Resources\\ShowKey.exe";
+                Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         #region INotify Property handler
 
