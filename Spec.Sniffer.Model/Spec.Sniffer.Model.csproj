@@ -78,6 +78,7 @@
     <Compile Include="AudioTest.cs" />
     <Compile Include="Drivers\Driver.cs" />
     <Compile Include="Drivers\DriversStatus.cs" />
+    <Compile Include="Internet.cs" />
     <Compile Include="MicTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

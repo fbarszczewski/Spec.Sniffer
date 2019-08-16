@@ -169,7 +169,7 @@
                                     <ToggleButton x:Name="TuneBtn"
                                                   IsChecked="{Binding TuneBtnIsChecked}"
                                                   Grid.Column="0" Margin="5"
-                                                  Background="Transparent">
+                                                  Background="Transparent" Opacity="0.8">
                                         <ToggleButton.Style>
                                             <Style TargetType="{x:Type ToggleButton}">
                                                 <Style.Triggers>
@@ -200,7 +200,7 @@
                                     <ToggleButton x:Name="MicButton"
                                                   Grid.Column="1" Margin="5"
                                                   Background="Transparent"
-                                                  IsChecked="{Binding MicBtnIsChecked}">
+                                                  IsChecked="{Binding MicBtnIsChecked}" Opacity="0.8">
 
                                         <ToggleButton.Style>
                                             <Style TargetType="{x:Type ToggleButton}">
@@ -527,7 +527,7 @@
                     <StackPanel 
                                 Grid.Column="1" Margin="0,5,0,0">
 
-                        <Button Content="LCD Test" Style="{StaticResource TabButton}"/>
+                        <Button Content="LCD Test" Style="{StaticResource TabButton}" Command="{Binding LcdTestCommand}"/>
                         <Button Content="Camera" Style="{StaticResource TabButton}"/>
                         <Button Content="Audio" Style="{StaticResource TabButton}"/>
                         <Button Content="Microphone" Style="{StaticResource TabButton}"/>

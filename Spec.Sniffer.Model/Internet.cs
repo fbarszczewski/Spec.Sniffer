@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
-namespace Spec.Sniffer
+namespace Spec.Sniffer.Model
 {
     public class Internet
     {
@@ -12,11 +8,16 @@ namespace Spec.Sniffer
         {
             try
             {
-                using (var client = new System.Net.WebClient())
+                using (var client = new WebClient())
                 using (client.OpenRead("http://clients3.google.com/generate_204"))
+                {
                     return true;
+                }
             }
-            catch { return false; }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

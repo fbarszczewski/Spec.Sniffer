@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 using Spec.Sniffer.Model;
 using Spec.Sniffer.Model.Battery;
@@ -139,11 +141,22 @@ namespace Spec.Sniffer.ViewModel
             }
         }
 
+        private void CameraButton()
+        {
+            if (SelectedVideoDevice == null)
+            {
+                SelectedVideoDevice = MediaDeviceList.FirstOrDefault();
+            }
+            else
+            {
+
+            }
+        }
+
 
         private void CameraLoad()
         {
             MediaDeviceList = WebcamDevice.GetVideoDevices;
-            //SelectedVideoDevice = MediaDeviceList.FirstOrDefault();
             SelectedVideoDevice = null;
         }
 
@@ -185,7 +198,17 @@ namespace Spec.Sniffer.ViewModel
             InternetStatus = Internet.IsConnected() ? "Connected" : "Disconnected";
         }
 
-        #endregion        
+        #endregion
+
+        #region LCD Button
+        public ICommand LcdTestCommand { get => new RelayCommand(argument =>OpenLcdTest() ); }
+
+        private void OpenLcdTest()
+        {
+            LcdTest lcdTest=new LcdTest();
+            lcdTest.Show();
+        }
+        #endregion
 
         #region INotify Property handler
 
