@@ -61,7 +61,7 @@ namespace Spec.Sniffer.ViewModel
         {
             MicBtnIsChecked = true;
             _isRecording = true;
-            var rec = new MicTest($"{Path.GetTempPath()}\\mictest.wav");
+            var rec = new MicTest($"{Path.GetTempPath()}");
             rec.Start();
             Thread.Sleep(3000);
             MicBtnIsChecked = null;
@@ -156,7 +156,6 @@ namespace Spec.Sniffer.ViewModel
         }
 
         private bool _camVisibility;
-        private bool _micBtnIsEnabled;
 
         public bool CamVisibility 
         {

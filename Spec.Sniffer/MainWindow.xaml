@@ -109,6 +109,11 @@
             </TabControl.DataContext>
 
             <TabItem Header="Diagnostics" Background="{x:Null}" >
+                <TabItem.InputBindings>
+                    <KeyBinding 
+                                Key="F1"
+                                Command="{Binding LcdTestCommand}" />
+                </TabItem.InputBindings>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
