@@ -501,7 +501,7 @@ namespace Spec.Sniffer.Model.Camera
             {
                 this.VideoSourceWindowsFormsHost.Visibility = Visibility.Hidden;
                 this.NoVideoSourceGrid.Visibility = Visibility.Visible;
-                this.NoVideoSourceMessage.Text = string.IsNullOrWhiteSpace(noVideoSourceMessage) ? "No video source device found" : noVideoSourceMessage;
+                this.NoVideoSourceMessage.Text = string.IsNullOrWhiteSpace(noVideoSourceMessage) ? "No video source selected." : noVideoSourceMessage;
             }
         }
 

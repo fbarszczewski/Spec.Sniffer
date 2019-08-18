@@ -25,7 +25,6 @@ namespace Spec.Sniffer.Model.Battery
         /// <summary>
         ///     Battery name id.
         /// </summary>
-
         public string Name
         {
             get => _name;
@@ -39,7 +38,6 @@ namespace Spec.Sniffer.Model.Battery
         /// <summary>
         ///     Identifies the battery. Closest to serial
         /// </summary>
-
         public string UniqueId
         {
             get => _uniqueId;
@@ -71,7 +69,9 @@ namespace Spec.Sniffer.Model.Battery
         /// <summary>
         ///     Current capacity remaining in %.
         /// </summary>
-        public string PowerRemaining => EstimatedChargeRemaining < 100 ? $"{EstimatedChargeRemaining}%  {ChargeRate}" : $"100% {ChargeRate}";
+        public string PowerRemaining => EstimatedChargeRemaining < 100
+            ? $"{EstimatedChargeRemaining}%  {ChargeRate}"
+            : $"100% {ChargeRate}";
 
         /// <summary>
         ///     Is battery charging.

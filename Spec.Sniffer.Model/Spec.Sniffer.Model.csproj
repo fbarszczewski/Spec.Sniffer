@@ -67,7 +67,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Battery\Battery.cs" />
+    <Compile Include="Parts\Battery.cs" />
     <Compile Include="Battery\BatteryStatus.cs" />
     <Compile Include="Camera\MediaInformation.cs" />
     <Compile Include="Camera\MediaInformationConverter.cs" />
@@ -80,7 +80,10 @@
     <Compile Include="Drivers\DriversStatus.cs" />
     <Compile Include="Internet.cs" />
     <Compile Include="MicTest.cs" />
+    <Compile Include="Parts\Memory.cs" />
+    <Compile Include="Parts\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spec\DeviceSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Camera\WebcamDevice.xaml">

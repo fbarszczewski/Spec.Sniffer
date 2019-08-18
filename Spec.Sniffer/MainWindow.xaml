@@ -13,9 +13,18 @@
 
 
 
-        <Style TargetType="{x:Type Label}">
-            <Setter Property="FontFamily" Value="Leelawadee UI Semilight"/>
+        <Style TargetType="{x:Type Label}" x:Key="SpecItemLabel">
+            <!--<Setter Property="Foreground" Value="#FF727272"/>-->
+            <Setter Property="FontFamily" Value="Leelawadee UI"/>
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="SpecItemTextBlock">
+            <!--<Setter Property="Foreground" Value="#FF727272"/>-->
+            <Setter Property="FontFamily" Value="Leelawadee UI"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10,0"/>
         </Style>
 
         <Style TargetType="{x:Type TabItem}">
@@ -70,7 +79,6 @@
             <Setter Property="Margin" Value="5,0,0,0"/>
         </Style>
 
-
         <Style TargetType="{x:Type DataGridRowHeader}">
             <Setter Property="Background" Value="Transparent" />
         </Style>
@@ -110,9 +118,24 @@
 
             <TabItem Header="Diagnostics" Background="{x:Null}" >
                 <TabItem.InputBindings>
-                    <KeyBinding 
-                                Key="F1"
-                                Command="{Binding LcdTestCommand}" />
+                    <KeyBinding Command="{Binding LcdTestCommand}" 
+                                Key="F1"/>
+                    <KeyBinding Command="{Binding CamCommand}" 
+                                Key="F2"/>
+                    <KeyBinding Command="{Binding TuneCommand}" 
+                                Key="F3"/>
+                    <KeyBinding Command="{Binding MicRecordCommand}" 
+                                Key="F4"/>
+                    <KeyBinding Command="{Binding KeyboardCommand}" 
+                                Key="F5"/>
+                    <KeyBinding Command="{Binding DevmgmtCommand}" 
+                                Key="F6"/>
+                    <KeyBinding Command="{Binding DiskmgmtCommand}" 
+                                Key="F7"/>
+                    <KeyBinding Command="{Binding HdTuneCommand}" 
+                                Key="F8"/>
+                    <KeyBinding Command="{Binding ShowKeyCommand}" 
+                                Key="F9"/>
                 </TabItem.InputBindings>
 
                 <Grid>
@@ -128,7 +151,6 @@
                                 <ColumnDefinition Width="380"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-
 
                             <Grid Grid.Column="0">
                                 <Grid.RowDefinitions>
@@ -173,85 +195,85 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                    <ToggleButton x:Name="TuneBtn"
+                                        <ToggleButton x:Name="TuneBtn"
                                                   IsChecked="{Binding TuneBtnIsChecked}"
                                                   Grid.Column="0" Margin="5"
                                                   Background="Transparent" Opacity="0.8">
-                                        <ToggleButton.Style>
-                                            <Style TargetType="{x:Type ToggleButton}">
-                                                <Style.Triggers>
-                                                    
-                                                    <Trigger Property="IsChecked" Value="False">
-                                                        <Setter Property="Content">
-                                                            <Setter.Value>
-                                                                <Border BorderThickness="0">
-                                                                    <Image Source="pack://siteoforigin:,,,/Resources/speakersOff.png" Margin="30"/>
-                                                                </Border>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                    </Trigger>
-                                                    <Trigger Property="IsChecked" Value="true">
-                                                        <Setter Property="Content">
-                                                            <Setter.Value>
-                                                                <Border BorderThickness="0">
-                                                                    <Image Source="pack://siteoforigin:,,,/Resources/speakersOn.png" Margin="30"/>
-                                                                </Border>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ToggleButton.Style>
-                                    </ToggleButton>
-    
-                                    <ToggleButton x:Name="MicButton"
+                                            <ToggleButton.Style>
+                                                <Style TargetType="{x:Type ToggleButton}">
+                                                    <Style.Triggers>
+
+                                                        <Trigger Property="IsChecked" Value="False">
+                                                            <Setter Property="Content">
+                                                                <Setter.Value>
+                                                                    <Border BorderThickness="0">
+                                                                        <Image Source="pack://siteoforigin:,,,/Resources/speakersOff.png" Margin="30"/>
+                                                                    </Border>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Trigger>
+                                                        <Trigger Property="IsChecked" Value="true">
+                                                            <Setter Property="Content">
+                                                                <Setter.Value>
+                                                                    <Border BorderThickness="0">
+                                                                        <Image Source="pack://siteoforigin:,,,/Resources/speakersOn.png" Margin="30"/>
+                                                                    </Border>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ToggleButton.Style>
+                                        </ToggleButton>
+
+                                        <ToggleButton x:Name="MicButton"
                                                   Grid.Column="1" Margin="5"
                                                   Background="Transparent"
                                                   IsChecked="{Binding MicBtnIsChecked}" Opacity="0.8"
                                                   Command="{Binding MicRecordCommand}">
 
-                                        <ToggleButton.Style>
-                                            <Style TargetType="{x:Type ToggleButton}">
-                                                <Style.Triggers>
+                                            <ToggleButton.Style>
+                                                <Style TargetType="{x:Type ToggleButton}">
+                                                    <Style.Triggers>
 
-                                                    <Trigger Property="IsChecked" Value="False">
-                                                        <Setter Property="Content">
-                                                            <Setter.Value>
-                                                                <Border BorderThickness="0">
-                                                                    <Image Source="pack://siteoforigin:,,,/Resources/MicStop.png" Margin="30"/>
-                                                                </Border>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                        <Setter Property="IsEnabled" Value="True"/>
-                                                    </Trigger>
+                                                        <Trigger Property="IsChecked" Value="False">
+                                                            <Setter Property="Content">
+                                                                <Setter.Value>
+                                                                    <Border BorderThickness="0">
+                                                                        <Image Source="pack://siteoforigin:,,,/Resources/MicStop.png" Margin="30"/>
+                                                                    </Border>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="IsEnabled" Value="True"/>
+                                                        </Trigger>
 
-                                                    <Trigger Property="IsChecked" Value="true">
-                                                        <Setter Property="Content">
-                                                            <Setter.Value>
-                                                                <Border BorderThickness="0">
-                                                                    <Image Source="pack://siteoforigin:,,,/Resources/MicRecord.png" Margin="30"/>
-                                                                </Border>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                        <Setter Property="IsEnabled" Value="False"/>
-                                                    </Trigger>
+                                                        <Trigger Property="IsChecked" Value="true">
+                                                            <Setter Property="Content">
+                                                                <Setter.Value>
+                                                                    <Border BorderThickness="0">
+                                                                        <Image Source="pack://siteoforigin:,,,/Resources/MicRecord.png" Margin="30"/>
+                                                                    </Border>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                        </Trigger>
 
-                                                    <Trigger Property="IsChecked" Value="">
-                                                        <Setter Property="Content">
-                                                            <Setter.Value>
-                                                                <Border BorderThickness="0">
-                                                                    <Image Source="pack://siteoforigin:,,,/Resources/MicPlay.png" Margin="30"/>
-                                                                </Border>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                        <Setter Property="IsEnabled" Value="False"/>
-                                                    </Trigger>
+                                                        <Trigger Property="IsChecked" Value="">
+                                                            <Setter Property="Content">
+                                                                <Setter.Value>
+                                                                    <Border BorderThickness="0">
+                                                                        <Image Source="pack://siteoforigin:,,,/Resources/MicPlay.png" Margin="30"/>
+                                                                    </Border>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                        </Trigger>
 
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ToggleButton.Style>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ToggleButton.Style>
 
-                                    </ToggleButton>
+                                        </ToggleButton>
 
 
                                         <StackPanel Grid.Column="1"/>
@@ -260,8 +282,6 @@
 
                                 </Border>
                             </Grid>
-
-
 
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
@@ -300,8 +320,6 @@
                                                        HorizontalAlignment="Left"/>
                                             </StackPanel>
 
-
-
                                             <StackPanel Grid.Row="1" Grid.Column="0"
                                                         Orientation="Horizontal">
                                                 <Label Content="Network: "/>
@@ -314,10 +332,8 @@
                                                 <Label Content="OK"/>
                                             </StackPanel>
 
-
                                         </Grid>
                                     </Border>
-
 
                                     <Border  x:Name="BatteryBorder"
                                              Grid.Row="1">
@@ -471,7 +487,6 @@
                                         Grid.Row="1"
                                         Style="{StaticResource TabItemBorder}">
 
-
                                     <Grid Margin="5,0,0,0">
 
                                         <Grid.RowDefinitions>
@@ -502,7 +517,6 @@
                                                   GridLinesVisibility="None">
                                             <DataGrid.Columns >
 
-
                                                 <DataGridTextColumn
                                                     Binding="{Binding Caption}"
                                                     IsReadOnly="True" 
@@ -518,15 +532,11 @@
 
                                         </DataGrid>
 
-
-
                                     </Grid>
 
                                 </Border>
 
                             </Grid>
-
-
 
                         </Grid>
 
@@ -546,6 +556,173 @@
                         <Button Content="ShowKey Plus" Style="{StaticResource TabButton}" Command="{Binding ShowKeyCommand}"/>
 
                     </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Spec" Background="{x:Null}" >
+                <TabItem.InputBindings>
+                    <!--<KeyBinding Command="{Binding LcdTestCommand}" 
+                                Key="F1"/>
+                    <KeyBinding Command="{Binding CamCommand}" 
+                                Key="F2"/>
+                    <KeyBinding Command="{Binding TuneCommand}" 
+                                Key="F3"/>
+                    <KeyBinding Command="{Binding MicRecordCommand}" 
+                                Key="F4"/>
+                    <KeyBinding Command="{Binding KeyboardCommand}" 
+                                Key="F5"/>
+                    <KeyBinding Command="{Binding DevmgmtCommand}" 
+                                Key="F6"/>
+                    <KeyBinding Command="{Binding DiskmgmtCommand}" 
+                                Key="F7"/>
+                    <KeyBinding Command="{Binding HdTuneCommand}" 
+                                Key="F8"/>
+                    <KeyBinding Command="{Binding ShowKeyCommand}" 
+                                Key="F9"/>-->
+                </TabItem.InputBindings>
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <Border  x:Name="DeviceBorder"
+                                 Style="{StaticResource TabItemBorder}">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                    <Image Source="pack://siteoforigin:,,,/Resources/Spec.png" 
+                                           Style="{StaticResource HeaderImage}"
+                                           Width="30"
+                                           Margin="6,4,6,0"/>
+                                    <Label Content="Lenovo P50"
+                                           Style="{StaticResource HeaderLabel}"
+                                           HorizontalAlignment="Left"/>
+                                </StackPanel>
+
+                                <Grid Margin="5,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="107"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+
+
+
+                                    <Label Content="Serial:" 
+                                           Grid.Row="0" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="Type:" 
+                                           Grid.Row="1" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="CPU:" 
+                                           Grid.Row="2" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="RAM:" 
+                                           Grid.Row="3" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="Storage:" 
+                                           Grid.Row="4" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="Optical:" 
+                                           Grid.Row="5" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="Resolution:" 
+                                           Grid.Row="6" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="OS:" 
+                                           Grid.Row="7" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="OS ver.:" 
+                                           Grid.Row="8" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+                                    <Label Content="OS Lang.:" 
+                                           Grid.Row="9" Grid.Column="0"
+                                           Style="{StaticResource SpecItemLabel}"/>
+
+
+                                    <TextBlock Text="Serial" 
+                                               Grid.Row="0" Grid.Column="1"
+                                               Style="{StaticResource SpecItemTextBlock}"/>
+                                    <TextBlock Text="Type" 
+                                               Grid.Row="1" Grid.Column="1"
+                                               Style="{StaticResource SpecItemTextBlock}"/>
+
+
+                                </Grid>
+
+                            </StackPanel>
+                            </Border>
+
+
+
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <Border  x:Name="SaveSpecBorder"
+                                 Style="{StaticResource TabItemBorder}">
+
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                        <Image Source="pack://siteoforigin:,,,/Resources/Spec.png" 
+                                               Style="{StaticResource HeaderImage}"
+                                               Width="30"
+                                               Margin="6,4,6,0"/>
+                                        <Label Content="Save Specification"
+                                               Style="{StaticResource HeaderLabel}"
+                                               HorizontalAlignment="Left"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                           
+                            </Border>
+                            <Border  x:Name="SaveLicenseBorder"
+                                     Style="{StaticResource TabItemBorder}">
+                                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                    <Image Source="pack://siteoforigin:,,,/Resources/Spec.png" 
+                                           Style="{StaticResource HeaderImage}"
+                                           Width="30"
+                                           Margin="6,4,6,0"/>
+                                    <Label Content="CMAR Report"
+                                           Style="{StaticResource HeaderLabel}"
+                                           HorizontalAlignment="Left"/>
+                                </StackPanel>
+                           
+                            </Border>
+
+
+
+                        </StackPanel>
+
+
+                    </Grid>
 
                 </Grid>
 
